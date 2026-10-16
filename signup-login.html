@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup and Login</title>
+</head>
+<body>
+
+    <h2>Signup</h2>
+    <input id="n" placeholder="Name">
+    <input id="e" type="email" placeholder="Email">
+    <input id="p" type="password" placeholder="Password">
+    <button onclick="signup()">Signup</button>
+
+    <h2>Login</h2>
+    <input id="le" type="email" placeholder="Email">
+    <input id="lp" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+
+    <p id="msg"></p>
+
+    <script>
+        let users = [];
+
+        function signup() {
+            users.push({
+                name: document.getElementById("n").value,
+                email: document.getElementById("e").value,
+                password: document.getElementById("p").value
+            });
+
+            document.getElementById("msg").textContent = "Signup successful!";
+        }
+
+        function login() {
+            const email = document.getElementById("le").value;
+            const password = document.getElementById("lp").value;
+
+            const user = users.find(u =>
+                u.email === email && u.password === password
+            );
+
+            document.getElementById("msg").textContent = user
+                ? "Welcome " + user.name
+                : "Invalid login!";
+        }
+    </script>
+
+</body>
+</html>
